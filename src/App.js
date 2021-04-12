@@ -1,23 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import "./App.css";
+import Form from "./components/Form";
+import Table from "./components/Table";
+import Navbar from "./components/Navbar";
 
 function App() {
+  const [credit, setCredit] = useState({
+    valor_cuota: 0,
+    n_cuotas: 0,
+  });
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Navbar />
+      <Form setCredit={setCredit} />
+      <Table
+        valor_cuota={credit.valor_cuota}
+        n_cuotas={credit.n_cuotas}
+        msg={credit.msg}
+      />
     </div>
   );
 }
